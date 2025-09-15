@@ -117,10 +117,10 @@ function Extension() {
 // [START product-offer-pre-purchase.loading-state]
 function LoadingSkeleton() {
   return (
-    <s-stack gap="large-100">
+    <s-stack gap="large-200">
       <s-divider />
       <s-heading>You might also like</s-heading>
-      <s-stack gap="large-100">
+      <s-stack gap="base">
         <s-grid
           gap="base"
           gridTemplateColumns="64px 1fr auto"
@@ -162,10 +162,10 @@ function ProductOffer({ product, i18n, adding, handleAddToCart, showError }) {
     "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_medium.png?format=webp&v=1530129081";
 
   return (
-    <s-stack gap="large-100">
+    <s-stack gap="large-200">
       <s-divider />
       <s-heading>You might also like</s-heading>
-      <s-stack gap="large-100">
+      <s-stack gap="base">
         <s-grid
           gap="base"
           gridTemplateColumns="64px 1fr auto"
