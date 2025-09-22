@@ -1,11 +1,6 @@
 import "@shopify/ui-extensions/preact";
 import { render } from "preact";
 import { useEffect, useState } from "preact/hooks";
-import {
-  useApi,
-  useCartLines,
-  useApplyCartLinesChange,
-} from "@shopify/ui-extensions/checkout/preact";
 
 // [START product-offer-pre-purchase.ext-index]
 // 1. Export the extension
@@ -15,17 +10,13 @@ export default function () {
 // [END product-offer-pre-purchase.ext-index]
 
 function Extension() {
-  const { query, i18n } = useApi();
   // [START product-offer-pre-purchase.add-to-cart]
-  const applyCartLinesChange = useApplyCartLinesChange();
+  const { applyCartLinesChange, query, i18n, lines } = shopify;
   // [END product-offer-pre-purchase.add-to-cart]
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [adding, setAdding] = useState(false);
   const [showError, setShowError] = useState(false);
-  // [START product-offer-pre-purchase.retrieve-cart-data]
-  const lines = useCartLines();
-  // [END product-offer-pre-purchase.retrieve-cart-data]
 
   useEffect(() => {
     fetchProducts();
@@ -97,7 +88,7 @@ function Extension() {
     return <LoadingSkeleton />;
   }
 
-  const productsOnOffer = getProductsOnOffer(lines, products);
+  const productsOnOffer = getProductsOnOffer(lines.value, products);
 
   if (!productsOnOffer.length) {
     return null;
