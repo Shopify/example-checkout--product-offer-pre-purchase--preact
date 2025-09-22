@@ -11,12 +11,15 @@ export default function () {
 
 function Extension() {
   // [START product-offer-pre-purchase.add-to-cart]
-  const { applyCartLinesChange, query, i18n, lines } = shopify;
+  const { applyCartLinesChange, query, i18n } = shopify;
   // [END product-offer-pre-purchase.add-to-cart]
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [adding, setAdding] = useState(false);
   const [showError, setShowError] = useState(false);
+  // [START product-offer-pre-purchase.retrieve-cart-data]
+  const { lines } = shopify;
+  // [END product-offer-pre-purchase.retrieve-cart-data]
 
   useEffect(() => {
     fetchProducts();
